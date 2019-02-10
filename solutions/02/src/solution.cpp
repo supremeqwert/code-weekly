@@ -12,17 +12,6 @@ public:
         chop();
     }
 
-    explicit BigNum(std::vector<uint32_t>&& num)
-        : vec(std::move(num))
-    {
-        vec.emplace_back(0);
-        for (uint32_t i = 0; i < vec.size() - 1; ++i) {
-            vec[i + 1] += (vec[i] / 10);
-            vec[i] %= 10;
-        }
-        chop();
-    }
-
     BigNum operator+(const BigNum& rhs) const
     {
         auto sum = vec.size() > rhs.vec.size() ? vec : rhs.vec;
@@ -36,6 +25,17 @@ public:
 
 private:
     std::vector<uint32_t> vec;
+
+    explicit BigNum(std::vector<uint32_t>&& num)
+        : vec(std::move(num))
+    {
+        vec.emplace_back(0);
+        for (uint32_t i = 0; i < vec.size() - 1; ++i) {
+            vec[i + 1] += vec[i] / 10;
+            vec[i] %= 10;
+        }
+        chop();
+    }
 
     void chop()
     {
@@ -57,8 +57,8 @@ std::ostream& operator<<(std::ostream& os, const BigNum& num)
 int main(int argc, char* argv[])
 {
     // read in numbers, cast to uint32_t
-    auto big1 = BigNum(argv[1]);
-    auto big2 = BigNum(argv[2]);
+    const BigNum big1(argv[1]);
+    const BigNum big2(argv[2]);
     std::cout << big1 + big2; // print num1 + num2
 }
 
