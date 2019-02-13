@@ -21,10 +21,12 @@ vary drastically, as different languages have varying usefulness for different
 problems.
 
 The highest-numbered week is the most current weekly exercise available. Right
-now, that is [Week 01](./01).
+now, that is [Week 02](./02).
 
 - [Week 01](./01) - write a function that computes n<sup>n</sup> in O(log(n))
   time. _02/06/2019_
+
+- [Week 02](./02) - sum arbitrarily-long integers. _02/13/2019_
 
 ### Usage
 
