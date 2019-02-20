@@ -10,7 +10,7 @@ cases = list(map(lambda s: s.strip(), lines[0::3]))
 expect = list(map(lambda s: s.strip(), lines[1::3]))
 
 for i in range(0, len(cases)):
-    res = subprocess.check_output(cmd + [cases[i]]).strip()
+    res = subprocess.check_output(cmd + [cases[i]]).decode("utf-8").strip()
     assert res == expect[i], "Test case value `{}` failed. Got\n\t{}\nExpected\n\t{}".format(
         cases[i], res, expect[i])
 
