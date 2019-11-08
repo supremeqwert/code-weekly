@@ -5,7 +5,13 @@
 // compute n^k
 uint32_t exp(uint32_t n, uint32_t k)
 {
-    /* solution */
+    if(k==0){
+        return 1;
+    }
+    if(k==1){
+        return n;
+    }
+    return exp(n,k-(k/2))*exp(n,k/2);
 }
 
 int main(int argc, char* argv[])
